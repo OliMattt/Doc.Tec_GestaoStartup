@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc.tec - Conversor de Arquivos</title>
+    <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-exchange-alt"></i> Doc.tec</h1>
+            <p>Transforme seus arquivos sem perder dados</p>
+        </header>
+
+        <main>
+            <div class="converter-box">
+                <h2>Conversor de Arquivos</h2>
+                
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Arraste seu arquivo aqui ou clique para selecionar</p>
+                    <input type="file" id="fileInput" accept="*">
+                </div>
+
+                <div class="format-selector">
+                    <label for="outputFormat">Converter para:</label>
+                    <select id="outputFormat">
+                        <option value="pdf">PDF</option>
+                        <option value="docx">Word (.docx)</option>
+                        <option value="xlsx">Excel (.xlsx)</option>
+                        <option value="pptx">PowerPoint (.pptx)</option>
+                        <option value="jpg">Imagem (.jpg)</option>
+                        <option value="png">Imagem (.png)</option>
+                        <option value="txt">Texto Simples (.txt)</option>
+                    </select>
+                </div>
+
+                <button id="convertBtn" class="btn-convert" disabled>
+                    <i class="fas fa-sync-alt"></i> Converter Arquivo
+                </button>
+
+                <div class="status" id="statusMessage"></div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Segurança</h3>
+                    <p>Seus arquivos são processados com total privacidade</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Rapidez</h3>
+                    <p>Conversões em segundos, mesmo para arquivos grandes</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Precisão</h3>
+                    <p>Mantemos todos os dados e formatação originais</p>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2025 Doc.tec - Todos os direitos reservados</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simulação básica de funcionalidade
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const uploadArea = document.getElementById('uploadArea');
+            const convertBtn = document.getElementById('convertBtn');
+            
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                uploadArea.innerHTML = `<i class="fas fa-file-alt"></i> ${fileName}`;
+                convertBtn.disabled = false;
+            }
+        });
+
+        document.getElementById('convertBtn').addEventListener('click', function() {
+            const statusMessage = document.getElementById('statusMessage');
+            const outputFormat = document.getElementById('outputFormat').value;
+            
+            statusMessage.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Convertendo para ${outputFormat.toUpperCase()}...`;
+            
+            // Simulação do tempo de conversão
+            setTimeout(() => {
+                statusMessage.innerHTML = `<i class="fas fa-check-circle"></i> Conversão concluída! <a href="#" class="download-link">Download do arquivo</a>`;
+            }, 2000);
+        });
+
+        // Drag and drop básico
+        const uploadArea = document.getElementById('uploadArea');
+        
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('dragover');
+            
+            if (e.dataTransfer.files.length) {
+                document.getElementById('fileInput').files = e.dataTransfer.files;
+                const fileName = e.dataTransfer.files[0].name;
+                uploadArea.innerHTML = `<i class="fas fa-file-alt"></i> ${fileName}`;
+                document.getElementById('convertBtn').disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booklub - Conectando Leitores</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Doc.Tec</h1>
+                <p>Cuidando dos seus arquivos.</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="login.html" class="btn-login">Tenho interesse</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Transforme arquivos!</h2>
+                <h3>Cansado de perder dados ou ter a formatação bagunçada ao converter arquivos?</h3>
+                <p>Traduza seus arquivos nos formatos desejados, de forma rápida e segura, sem perder seus dados.</p>
+            </div>
+            <div class="hero-image">
+                <img src="images/logo.png" alt="Imagem 1">
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre" class="about">
+        <div class="container">
+            <h2>Sobre a Doc.Tec</h2>
+            <p>A DocTec é a plataforma que simplifica a conversão de arquivos: envie seu documento, escolha o formato desejado e receba o resultado pronto para download.
+            </p>
+              <p>Rápido, fácil e seguro - com a DocTec, você transforma arquivos sem complicação e sem perda de dados, economizando tempo e mantendo a qualidade.</p>
+            </p>
+        </div>
+    </section>
+
+    <section id="recursos" class="features">
+        <div class="container">
+            <h2>Funcionalidades</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-book-open"></i>
+                    <h3>Conversão precisa</h3>
+                    <p>Transforme todos seus arquivos entre diversos formatos, mantendo toda a estrutura e dados.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-comments"></i>
+                    <h3>Agilidade</h3>
+                    <p>Com uma tecnologia otimizada, processamos seus arquivos em pouco tempo, garantindo eficiência.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Segurança garantida</h3>
+                    <p>Todos seus arquivos são processados com total segurança e privacidade. Nós não armazenamos seus dados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contact">
+        <div class="container">
+            <h2>Gostou da proposta?</h2>
+            <button type="submit" class="btn-primary" id="submitBtn">Quero participar</button>
+            <p id="clickCounter">Cliques no botão: 0</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <h3>Doc.tec</h3>
+                <p>Cuidando dos seus dados desde 2025</p>
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-goodreads"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 DocTec. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitBtn = document.getElementById('submitBtn');
+            const clickCounter = document.getElementById('clickCounter');
+            
+            // Recupera o contador do localStorage ou inicializa com 0
+            let clicks = localStorage.getItem('buttonClicks') || 0;
+            clickCounter.textContent = `Cliques no botão: ${clicks}`;
+            
+            submitBtn.addEventListener('click', function() {
+                // Incrementa o contador
+                clicks++;
+                // Atualiza o localStorage
+                localStorage.setItem('buttonClicks', clicks);
+                // Atualiza o texto exibido
+                clickCounter.textContent = `Cliques no botão: ${clicks}`;
+                
+                // Aqui você pode adicionar outras ações que deseja realizar ao clicar no botão
+                alert('Obrigado pelo seu interesse! Entraremos em contato em breve.');
+            });
+        });
+    </script>
+</body>
+</html>
